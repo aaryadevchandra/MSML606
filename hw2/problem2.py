@@ -109,15 +109,22 @@ def preorder_traversal(node, out):
             preorder_traversal(node.right, out)
 
 
-# Inorder traversal (Infix notation).
-# Order: left → root → right
-# Parentheses are not added here; this prints the raw structure.
 def inorder_traversal(node, out):
-    if node != None:
-        inorder_traversal(node.left, out)
+    if node is None:
+        return
+
+    # If this is a leaf (operand), just append the value
+    if node.left is None and node.right is None:
         out.append(node.value)
-        inorder_traversal(node.right, out)
-        
+        return
+
+    # Otherwise, it's an operator expression: wrap in parentheses
+    out.append("(")
+    inorder_traversal(node.left, out)
+    out.append(node.value)
+    inorder_traversal(node.right, out)
+    out.append(")")
+
 
 # Postorder traversal (Postfix notation).
 # Order: left → right → root
