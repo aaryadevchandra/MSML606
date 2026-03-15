@@ -90,3 +90,33 @@ class HashTable:
             if len(self.data[i]) > m:
                 m = len(self.data[i])
         return m
+
+print("PROBLEM 1")
+print()
+
+x = HashTable(10, "division")
+
+x.insert("apple", 10)
+x.insert("banana", 20)
+x.insert("orange", 30)
+
+print("apple =", x.search("apple"))
+print("banana =", x.search("banana"))
+print("orange =", x.search("orange"))
+print("grape =", x.search("grape"))
+print()
+
+x.insert("apple", 99)
+print("apple after update =", x.search("apple"))
+print()
+
+print("delete banana =", x.delete("banana"))
+print("banana now =", x.search("banana"))
+print("delete grape =", x.delete("grape"))
+print()
+
+print("load factor =", x.get_load_factor())
+print("avg chain length =", x.average_chain_length())
+print("max chain length =", x.max_chain_length())
+print()
+
