@@ -266,3 +266,32 @@ for z in range(3):
     print("avg chain", h.average_chain_length())
     print("max chain", h.max_chain_length())
     print()
+
+
+plt.figure(figsize=(8, 5))
+plt.bar(names, success_result)
+plt.xlabel("Key Distribution")
+plt.ylabel("Average Successful Search Time")
+plt.title("Successful Search Time by Distribution")
+plt.show()
+
+plt.figure(figsize=(8, 5))
+plt.bar(names, unsuccess_result)
+plt.xlabel("Key Distribution")
+plt.ylabel("Average Unsuccessful Search Time")
+plt.title("Unsuccessful Search Time by Distribution")
+plt.show()
+
+plt.figure(figsize=(8, 5))
+plt.bar(names, avg_chain_result)
+plt.xlabel("Key Distribution")
+plt.ylabel("Average Chain Length")
+plt.title("Average Chain Length by Distribution")
+plt.show()
+
+plt.figure(figsize=(8, 5))
+plt.bar(names, max_chain_result)
+plt.xlabel("Key Distribution")
+plt.ylabel("Maximum Chain Length")
+plt.title("Maximum Chain Length by Distribution")
+plt.show()
