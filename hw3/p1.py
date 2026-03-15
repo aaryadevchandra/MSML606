@@ -34,4 +34,59 @@ class HashTable:
         temp = temp - int(temp)
         return int(self.size * temp)
 
-    
+    def get_index(self, key):
+        if self.method == "division":
+            return self.hash_division(key)
+        else:
+            return self.hash_multiplication(key)
+
+    def insert(self, key, value):
+        idx = self.get_index(key)
+
+        for i in range(len(self.data[idx])):
+            if self.data[idx][i][0] == key:
+                self.data[idx][i] = (key, value)
+                return
+
+        self.data[idx].append((key, value))
+
+    def search(self, key):
+        idx = self.get_index(key)
+
+        for i in range(len(self.data[idx])):
+            if self.data[idx][i][0] == key:
+                return self.data[idx][i][1]
+
+        return None
+
+    def delete(self, key):
+        idx = self.get_index(key)
+
+        for i in range(len(self.data[idx])):
+            if self.data[idx][i][0] == key:
+                del self.data[idx][i]
+                return True
+
+        return False
+
+    def count_items(self):
+        total = 0
+        for i in range(len(self.data)):
+            total = total + len(self.data[i])
+        return total
+
+    def get_load_factor(self):
+        return self.count_items() / self.size
+
+    def average_chain_length(self):
+        total = 0
+        for i in range(len(self.data)):
+            total = total + len(self.data[i])
+        return total / self.size
+
+    def max_chain_length(self):
+        m = 0
+        for i in range(len(self.data)):
+            if len(self.data[i]) > m:
+                m = len(self.data[i])
+        return m
